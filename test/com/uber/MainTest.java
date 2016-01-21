@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
@@ -48,7 +49,9 @@ public class MainTest extends TestCase {
                         r -> {
                             List<String> lines = Arrays.asList(r, results.get(r));
                             try {
-                                Files.write(Paths.get("unit-test-"+ r + ".txt"), lines, StandardCharsets.UTF_8,
+                                Path path = Paths.get("unit-test-"+ r + ".txt");
+                                System.out.println(r + ": path = " + path + " - result: " + results.get(r));
+                                Files.write(path, lines, StandardCharsets.UTF_8,
                                         StandardOpenOption.CREATE, StandardOpenOption.APPEND);
                             } catch (IOException e) {
                                 e.printStackTrace();
