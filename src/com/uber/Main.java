@@ -22,7 +22,7 @@ public class Main {
     public static Boolean gateOne() {
         List<String> lines = new ArrayList<>();
         try {
-            lines = Files.lines(Paths.get("/Users/canatalio/uber-code-challenge/unit-test-test1.txt")).collect(
+            lines = Files.lines(Paths.get("/Users/canatalio/uber-code-challenge/unit-test-accuracy.txt")).collect(
                     Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
@@ -38,5 +38,7 @@ public class Main {
 
         return false;
     }
+
+
 
 }

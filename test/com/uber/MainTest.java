@@ -15,6 +15,7 @@ public class MainTest extends TestCase {
     private static final Integer DEFAULT_VAL = 3;
     private static final Integer DEFAULT_VAL2 = 4;
     private static final Integer EXPECTED_RESULT = 12;
+    private static final Long MAX_EXECUTION_TIME_NANO_SEC = 10000l;
 
     Map<String, String> results;
 
@@ -35,8 +36,23 @@ public class MainTest extends TestCase {
         assertEquals(EXPECTED_RESULT, actualResult);
 
         if( EXPECTED_RESULT.equals(actualResult))
-            results.put("test1", "success");
+            results.put("test1-accuracy", "success");
 
+    }
+
+    public void testProductExecutionSpeed() {
+
+        long startTime = System.nanoTime();
+        Integer actualResult = classUnderTest.getProduct(DEFAULT_VAL, DEFAULT_VAL2);
+        long endTime = System.nanoTime();
+
+        long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
+
+        System.out.println("Method execution duration: " + duration + " nano seconds");
+
+        if( EXPECTED_RESULT.equals(actualResult)
+                && duration < MAX_EXECUTION_TIME_NANO_SEC)
+            results.put("test2-duration", "success");
     }
 
 
