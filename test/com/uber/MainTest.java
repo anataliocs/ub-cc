@@ -10,12 +10,14 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
 
+import static com.uber.Main.*;
+
 public class MainTest extends TestCase {
 
     private static final Integer DEFAULT_VAL = 3;
     private static final Integer DEFAULT_VAL2 = 4;
     private static final Integer EXPECTED_RESULT = 12;
-    private static final Long MAX_EXECUTION_TIME_NANO_SEC = 10000l;
+
 
     Map<String, String> results;
 
@@ -52,7 +54,7 @@ public class MainTest extends TestCase {
 
         if( EXPECTED_RESULT.equals(actualResult)
                 && duration < MAX_EXECUTION_TIME_NANO_SEC)
-            results.put("test2-duration", "success");
+            results.put("test2-duration", duration+"");
     }
 
 
