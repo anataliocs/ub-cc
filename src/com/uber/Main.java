@@ -16,13 +16,29 @@ public class Main {
 
     public static void main(String[] args) {
 
+        List<Boolean> gateResults = new ArrayList<>();
+
         Boolean gateOneResults = gateOne();
+        gateResults.add(gateOneResults);
         System.out.println("Gate One Results = " + gateOneResults);
         System.out.println();
 
         Boolean gateTwoResults = gateTwo();
         System.out.println("Gate Two Results = " + gateTwoResults);
+        gateResults.add(gateTwoResults);
         System.out.println();
+
+
+        Optional<Boolean> failedGate = gateResults.stream().filter( gr -> !gr).findFirst();
+
+        System.out.println();
+        System.out.println("====");
+        System.out.println();
+        if(failedGate.isPresent())
+            System.out.println("Failed");
+        else
+            System.out.println("Ready to deploy!");
+
     }
 
 
