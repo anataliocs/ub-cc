@@ -15,8 +15,7 @@ public class Main {
 
     private static final Long EXPECTED_LINE_COUNT = 2l;
     public static final Long MAX_EXECUTION_TIME_NANO_SEC = 10000l;
-    private static Long upperBoundExecutionSpeed;
-    private static Long lowerBoundExecutionSpeed;
+
 
     public static void main(String[] args) {
 
@@ -84,13 +83,6 @@ public class Main {
             System.out.println("Method ExecutionTime = " + executionTime.get());
             System.out.println("Max Method ExecutionTime = " + MAX_EXECUTION_TIME_NANO_SEC);
 
-            upperBoundExecutionSpeed = new Double(Math.ceil(parseDouble(executionTime.get()) * 1.02)).longValue();
-            lowerBoundExecutionSpeed = new Double(Math.floor(parseDouble(executionTime.get()) * .98)).longValue();
-
-            System.out.println();
-            System.out.println("upperBoundExecutionSpeed = " + upperBoundExecutionSpeed);
-            System.out.println("lowerBoundExecutionSpeed = " + lowerBoundExecutionSpeed);
-
             return true;
 
 
@@ -115,19 +107,5 @@ public class Main {
         return true;
     }
 
-    public static Long getUpperBoundExecutionSpeed() {
-        return upperBoundExecutionSpeed;
-    }
 
-    public static void setUpperBoundExecutionSpeed(Long upperBoundExecutionSpeed) {
-        Main.upperBoundExecutionSpeed = upperBoundExecutionSpeed;
-    }
-
-    public static Long getLowerBoundExecutionSpeed() {
-        return lowerBoundExecutionSpeed;
-    }
-
-    public static void setLowerBoundExecutionSpeed(Long lowerBoundExecutionSpeed) {
-        Main.lowerBoundExecutionSpeed = lowerBoundExecutionSpeed;
-    }
 }
