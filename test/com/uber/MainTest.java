@@ -118,8 +118,6 @@ public class MainTest extends TestCase {
     public void tearDown() throws Exception {
         super.tearDown();
 
-        System.out.println("results.keySet() = " + results.keySet());
-
         results.keySet().stream().forEach(
 
                         r -> {
