@@ -19,9 +19,9 @@ import static java.lang.Double.parseDouble;
 
 public class MainTest extends TestCase {
 
-    private static final Integer DEFAULT_VAL = 3;
-    private static final Integer DEFAULT_VAL2 = 4;
-    private static final Integer EXPECTED_RESULT = 12;
+    private static final Integer DEFAULT_VAL = 7;
+    private static final Integer DEFAULT_VAL2 = 8;
+    private static final Integer EXPECTED_RESULT = 56;
 
 
     Map<String, String> results;
@@ -76,7 +76,7 @@ public class MainTest extends TestCase {
 
         assertTrue(duration < MAX_EXECUTION_TIME_NANO_SEC);
 
-        results.put("test1-duration", duration+"");
+        results.put("test2-duration", duration+"");
     }
 
     @Test
@@ -107,9 +107,9 @@ public class MainTest extends TestCase {
             assertTrue(executionTimeOutOfRange[0]);
 
             if(executionTimeOutOfRange[0] != null && !executionTimeOutOfRange[0])
-                results.put("test2-duration-deviation", "success");
+                results.put("test3-duration-deviation", "success");
             else
-                results.put("test2-duration-deviation", executionTimesString.toString());
+                results.put("test3-duration-deviation", executionTimesString.toString());
     }
 
 
@@ -125,7 +125,7 @@ public class MainTest extends TestCase {
                         r -> {
                             List<String> lines = Arrays.asList(r, results.get(r));
                             try {
-                                Path path = Paths.get("unit-test-"+ r + ".txt");
+                                Path path = Paths.get("src/com/uber/unit-test-"+ r + ".txt");
 
                                 //Clear file
                                 PrintWriter pw = null;
@@ -141,6 +141,7 @@ public class MainTest extends TestCase {
                                 //Write new data
                                 Files.write(path, lines, StandardCharsets.UTF_8,
                                         StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
