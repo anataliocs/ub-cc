@@ -9,6 +9,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.*;
+import java.util.stream.IntStream;
 
 import static com.uber.Main.*;
 
@@ -56,6 +57,26 @@ public class MainTest extends TestCase {
                 && duration < MAX_EXECUTION_TIME_NANO_SEC)
             results.put("test2-duration", duration+"");
     }
+
+    public void testProductExecutionSpeedDeviation() {
+
+        List<Long> executionTimes = new ArrayList<>();
+
+        IntStream.rangeClosed(1, 3)
+                .parallel().forEach(
+                i -> {
+                    long startTime = System.nanoTime();
+                    Integer actualResult = classUnderTest.getProduct(DEFAULT_VAL, DEFAULT_VAL2);
+                    long endTime = System.nanoTime();
+                    long duration = (endTime - startTime);
+                    executionTimes.add(duration);
+                }
+        );
+
+
+            results.put("test2-duration", "");
+    }
+
 
 
     @Override
